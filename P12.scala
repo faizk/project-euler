@@ -10,7 +10,7 @@ object P12 extends Euler {
     (1 to (n/2).toInt) filter (x => n % x == 0)
  
   def factors_best(n: Int) = 
-    (1 to math.sqrt(n).toInt) filter (n % _ == 0) flatMap (x => Seq(x, n/x)) 
+    (1 to math.sqrt(n).toInt) filter (n % _ == 0) flatMap (x => Set(x, n/x)) 
 
   type Primes = Array[Int]
 

@@ -6,12 +6,11 @@ import List( nub, group, sort, maximumBy, find )
 import Char
 
 
-fib 0 = 0
-fib 1 = 1
-fib (n+1) = fib n + fib(n -1)
+fib 0 _ = []
+fib m n = m : fib n (m+n)
 
 
-allFibs = [fib x | x <- [0..]]
+allFibs = fib 1 1
 
 
 -- Problem5
@@ -217,6 +216,19 @@ p13 = take 10 $ show $ sum hundred50DigitNos
 
 p16 = [Char.ord(c)-48 | c <-show(2^1000)]
 
+p20 n = sum $ digits $ fact n
+    where 
+        digits n = [Char.ord(c)-48 | c <- show n]
+        fact 1 = 1
+        fact n = n * fact (n-1)
+
+p25 n = let fi = zip [1..] allFibs in 
+  do 
+    (i,_) <- find (\(i,x) -> x >= 10^n) fi
+    return i
+
+
+
 ----------------------------------------------------------------
 -- Go!
 
@@ -233,6 +245,10 @@ ep 9 = show $ p9 1000
 ep 10 = show $ p10 (2 * 1000 * 1000)
 
 ep 16 = show p16
+
+ep 20 = show $ p20 100
+
+ep 25 = show $ p25 1000
 
 ep _ = "Did not do this one."
 
