@@ -16,17 +16,24 @@ object Utils {
 
 trait Euler {
 
-  class Memo[K,V] {
+  class Memo[K,V](off: Boolean = false) {
     val cache = collection.mutable.Map[K, V]()
-    def apply(k: K)(f: => V):V =
+    var (hits, misses) = (0,0)
+    def hit  = hits = hits + 1
+    def miss = misses = misses + 1 
+    def apply(k: K)(f: => V):V = if (off) f else
       cache.get(k) match {
-        case Some(v) => v
+        case Some(v) => hit; v
         case None => {
+          miss
           val v = f
           cache(k) = v
           v
         }
       }
+    override
+    def toString = if (off) "(* OFF *)" 
+      else "(* hits:%d, misses:%d *)" format (hits, misses)
   }
 
 
