@@ -21,7 +21,7 @@ object P10 extends Euler {
 
 
   def sieve(n: Int) = {
-    val p = (0 to n) map (n => true) toArray
+    val p = Array.fill(n+1)(true)
     import math.pow
     Seq(0,1) foreach (p(_) = false)
 
