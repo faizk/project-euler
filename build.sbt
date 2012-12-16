@@ -4,7 +4,7 @@ version := "0.1.0"
 
 scalaVersion := "2.9.2"
 
-fork in run := true
+// fork in run := true
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
@@ -15,8 +15,11 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalacheck" %% "scalacheck" % "1.9"
+  "org.scalacheck" %% "scalacheck" % "1.9",
+  "org.scalatest" %% "scalatest" % "2.0.M2" % "test"
 )
+
+
 
 
 // vim: filetype=scala

@@ -1,6 +1,6 @@
 object P32 extends Euler {
 
-  import P21.factors
+  import Common.factors
 
   import Utils._
 

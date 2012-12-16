@@ -1,9 +1,10 @@
 object P21 extends Euler {
 
+  import Common._
+
   lazy val memo = new Memo[Int, Option[Int]]
 
-  def factors(n:Int) = P12.factors_best(n)
-
+  
   def d(n:Int) = memo(n) {
     factors(n) filterNot(n ==) reduceOption (_+_)
   }

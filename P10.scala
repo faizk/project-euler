@@ -20,6 +20,24 @@ object P10 extends Euler {
   }
 
 
+  def sieve1(n: Int) = {
+    val s = collection.mutable.Set[Int]()
+    val p = new {
+      def apply(n: Int) = !s.contains(n)
+      def update(n:Int, b:Boolean) = 
+        if (b) s -= n else s += n
+    }
+    import math.pow
+    Seq(0,1) foreach (p(_) = false)
+    2 until n foreach { i =>
+      if (p(i)) 
+        (pow(i,2).toInt to n by i) foreach (p(_) = false)
+    }
+    s
+  }
+
+    
+
   def sieve(n: Int) = {
     val p = Array.fill(n+1)(true)
     import math.pow
