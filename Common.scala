@@ -35,7 +35,28 @@ object Common {
       fp map { case (f,p) => math.pow(f,p) } reduceOption (_*_) map (_.toInt) orElse Some(1)
                            
   }                        
-                           
+ 
+
+  object Conv {
+    
+    class Rotateable[T](s: Seq[T]) {
+      private
+      def rot(s: Seq[T], n:Int): Seq[T] = (n, s) match { 
+        case (_, Seq()) => s
+        case (0, s) => s
+        case (n, s) if n > 0 => rot(s.tail++Seq(s.head), n-1)
+        case (n, s) if n < 0 => rot(Seq(s.last) ++ s.slice(0, s.size-1), n+1)
+      }
+      def rotate(n: Int): Seq[T] = rot(s, n)
+    }
+    implicit def toRotateable[T](s: Seq[T]) = new Rotateable(s)
+
+    class HasDigits(n: Int) {
+      def digits = n.toString.map(_-48)
+    }
+    implicit def toHasDigits(n:Int) = new HasDigits(n)
+
+  }
 }                          
 // vim: set ts=2 sw=2 et:  
                            
