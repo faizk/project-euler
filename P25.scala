@@ -1,5 +1,6 @@
 object P25 extends Euler {
 
+  import scala.language.implicitConversions
   implicit def toBigInt(i:Int) = BigInt(i)
   implicit def toBigDecimal(d:Double) = BigDecimal(d)
 

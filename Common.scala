@@ -3,6 +3,8 @@ object Common {
   import P12.factors_best 
   import P10.sieve
 
+  import language.implicitConversions
+
   def factors(n:Int) = P12.factors_best(n)
 
 

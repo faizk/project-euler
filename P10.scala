@@ -22,11 +22,12 @@ object P10 extends Euler {
 
   def sieve1(n: Int) = {
     val s = collection.mutable.Set[Int]()
-    val p = new {
+    class Rev {
       def apply(n: Int) = !s.contains(n)
       def update(n:Int, b:Boolean) = 
         if (b) s -= n else s += n
     }
+    val p = new Rev
     import math.pow
     Seq(0,1) foreach (p(_) = false)
     2 until n foreach { i =>

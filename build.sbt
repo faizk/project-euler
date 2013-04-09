@@ -2,11 +2,11 @@ name := "project-euler"
 
 version := "0.1.0"
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.10.1"
 
 // fork in run := true
 
-scalacOptions ++= Seq("-unchecked", "-deprecation")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-language:postfixOps")
 
 
 resolvers ++= Seq(
@@ -15,8 +15,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalacheck" %% "scalacheck" % "1.9",
-  "org.scalatest" %% "scalatest" % "2.0.M2" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.10.1" % "test",
+  "org.scalatest" % "scalatest_2.10" % "2.0.M5b" % "test"
 )
 
 

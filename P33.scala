@@ -35,7 +35,7 @@ object P33 extends Euler {
     n <- 11 to 99 if isPanish(n)
     d <- 11 to 99 if isPanish(d)
     if d > n
-    val (ds, ns) = (digits(d), digits(n))
+    (ds, ns) = (digits(d), digits(n))
     c <- ns intersect ds headOption;
     d1 <- Some(ds.filterNot(_==c).toString toInt)
     n1 <- Some(ns.filterNot(_==c).toString toInt)

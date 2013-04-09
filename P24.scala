@@ -1,6 +1,8 @@
 object P24 extends Euler {
 
 
+  import scala.language.implicitConversions
+
   lazy val digits = (0 to 9) view
 
   def except(n:Int) = ((n+1) to 9) 
@@ -19,9 +21,11 @@ object P24 extends Euler {
   } yield (d0, d1, d2, d3, d4, d5, d6, d7, d8, d9)
 
 
-  implicit def richInt[T](n: T) = new {
-    def notIn(l: T*) = l forall (_!=n)
+  class RichInt(n: Int) {
+    def notIn(l: Int*) = l forall (_!=n)
   }
+
+  implicit def toRichInt(n: Int) = new RichInt(n) 
 
   
   lazy val fancyPerms = for {

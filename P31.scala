@@ -29,6 +29,31 @@ object P31 extends Euler {
   def soln = f(200, deNoms)
 
 
+    /**
+
+
+  def changeR(money: Int, coins: List[Int]):Int = {
+    if (money == 0) 1
+    else if (coins.isEmpty) 0
+    else {
+      val (d, rest) = (coins.head, coins.tail)
+        (0 to money by d) map (d => changeR(money - d, rest)) sum 
+    }
+  }
+
+  def countChange(money: Int, coins: List[Int]): Int = 
+    if (money == 0) 1
+  else if (money < 0) 0
+  else if (coins.isEmpty) 0
+  else 
+    countChange(money, coins.tail) +
+  countChange(money - coins.head, coins) 
+
+
+
+  */
+
+
 }
 
 // vim: set ts=2 sw=2 et:

@@ -1,5 +1,6 @@
 object P35 extends Euler {
 
+  import scala.language.implicitConversions
   lazy val primes = P10.sieve(1000*1000) toSet
 
   class RotatableInt(n:Int) {
